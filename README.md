@@ -4,6 +4,9 @@ A web application that lets a user enter plain text, choose an encryption
 algorithm, view the resulting ciphertext, reverse it with decryption, and
 (if logged in) save encrypted messages to their account.
 
+## Demo Video
+Watch the demo here: [https://drive.google.com/file/d/1Tc6Lb0k-866HZ-0oJJb-ot8Upr6mL8jM/view?usp=drive_link](https://drive.google.com/file/d/1Tc6Lb0k-866HZ-0oJJb-ot8Upr6mL8jM/view?usp=drive_link)
+
 ## Project Structure
 ```
 text-encryption-tool/
