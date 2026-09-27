@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web-Based Text Encryption Tool</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app">
+    <header class="app-header">
+      <h1>🔐 Text Encryption Tool</h1>
+      <p class="subtitle">Encrypt, decrypt, and hash text using multiple algorithms</p>
+    </header>
+
+    <!-- ===================== AUTH CARD ===================== -->
+    <section class="card auth-card">
+
+      <!-- Logged OUT view -->
+      <div id="authLoggedOut">
+        <div class="auth-tabs">
+          <button class="tab-btn active" id="tabLogin">Log In</button>
+          <button class="tab-btn" id="tabRegister">Register</button>
+        </div>
+
+        <div id="loginForm" class="auth-form">
+          <label for="loginUsername">Username</label>
+          <input type="text" id="loginUsername" placeholder="Your username">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" placeholder="Your password">
+          <button id="loginBtn" class="btn primary full">Log In</button>
+        </div>
+
+        <div id="registerForm" class="auth-form" style="display:none;">
+          <label for="registerUsername">Username</label>
+          <input type="text" id="registerUsername" placeholder="Choose a username (min 3 chars)">
+          <label for="registerPassword">Password</label>
+          <input type="password" id="registerPassword" placeholder="Choose a password (min 6 chars)">
+          <button id="registerBtn" class="btn primary full">Create Account</button>
+        </div>
+
+        <div id="authStatus" class="status"></div>
+        <p class="hint">Log in to save your encrypted messages to your account. You can still use the tool below without an account.</p>
+      </div>
+
+      <!-- Logged IN view -->
+      <div id="authLoggedIn" style="display:none;">
+        <div class="logged-in-row">
+          <span>👤 Logged in as <strong id="loggedInUsername"></strong></span>
+          <button id="logoutBtn" class="btn ghost small">Log Out</button>
+        </div>
+      </div>
+    </section>
+
+    <main class="card">
+
+      <!-- Plain text input -->
+      <label for="inputText">Plain Text</label>
+      <textarea id="inputText" rows="4" placeholder="Type or paste your text here..."></textarea>
+
+      <!-- Algorithm selection -->
+      <div class="row">
+        <div class="field">
+          <label for="algorithm">Algorithm</label>
+          <select id="algorithm">
+            <option value="">-- Select an algorithm --</option>
+            <optgroup label="Modern / Standard">
+              <option value="aes">AES (Advanced Encryption Standard)</option>
+              <option value="des">DES (Data Encryption Standard)</option>
+              <option value="rsa">RSA (Public-key)</option>
+              <option value="base64">Base64 Encoding</option>
+              <option value="sha256">SHA-256 (Hashing - one way)</option>
+            </optgroup>
+            <optgroup label="Classical - Substitution">
+              <option value="caesar">Caesar Cipher</option>
+              <option value="vigenere">Vigenère Cipher</option>
+              <option value="autokey">Vigenère Autokey Cipher</option>
+              <option value="vernam">Vernam Cipher (XOR)</option>
+              <option value="otp">One-Time Pad (XOR)</option>
+            </optgroup>
+            <optgroup label="Classical - Transposition">
+              <option value="railfence">Rail Fence Cipher</option>
+              <option value="columnar">Columnar Transposition Cipher</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <!-- Generic parameter field: label/type change per algorithm -->
+        <div class="field" id="paramFieldWrap" style="display:none;">
+          <label for="paramInput" id="paramLabel">Key</label>
+          <input type="text" id="paramInput" placeholder="">
+        </div>
+      </div>
+
+      <div id="rsaKeyInfo" class="hint" style="display:none;"></div>
+
+      <!-- Action buttons -->
+      <div class="button-row">
+        <button id="encryptBtn" class="btn primary">Encrypt</button>
+        <button id="decryptBtn" class="btn secondary">Decrypt</button>
+        <button id="clearBtn" class="btn ghost">Clear</button>
+      </div>
+      <div class="button-row" id="saveRow" style="display:none;">
+        <button id="saveBtn" class="btn secondary">💾 Save Result to My Account</button>
+      </div>
+
+      <!-- Validation / status message -->
+      <div id="statusMsg" class="status"></div>
+
+      <!-- Output -->
+      <label for="outputText">Result</label>
+      <textarea id="outputText" rows="4" readonly placeholder="Your result will appear here..."></textarea>
+
+      <div class="button-row">
+        <button id="copyBtn" class="btn ghost">📋 Copy Result</button>
+      </div>
+
+    </main>
+
+    <!-- ===================== SAVED MESSAGES CARD ===================== -->
+    <section class="card" id="savedMessagesCard" style="display:none;">
+      <h2 class="section-title">💾 My Saved Messages</h2>
+      <div id="savedMessagesList" class="saved-list">
+        <p class="hint">No saved messages yet.</p>
+      </div>
+    </section>
+
+    <footer class="app-footer">
+      <p>Educational demo — for learning encryption concepts only. Not for production security use.</p>
+    </footer>
+  </div>
+
+  <!-- CryptoJS library for AES, DES and SHA-256 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+  <script src="script.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>

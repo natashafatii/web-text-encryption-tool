@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "natashafatima",
+      "passwordHash": "$2b$10$QPlSsImsAIDMEosQZPnNKuwStzsP7EF76MEHRtJReIlHXs//KJHaK"
+    },
+    {
+      "id": 2,
+      "username": "NatashaFatima1",
+      "passwordHash": "$2b$10$qGZqlqw5lWhG7G21xfPU9uPJNCkgLkcxVAl52ax3hPsRVWNGZ7KWO"
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "userId": 1,
+      "algorithm": "caesar",
+      "ciphertext": "qdwdvkd",
+      "createdAt": "2026-09-27T12:09:47.753Z"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "algorithm": "railfence",
+      "ciphertext": "ACAMA TAKSTPTDY TI3O",
+      "createdAt": "2026-09-27T18:22:21.873Z"
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "algorithm": "railfence",
+      "ciphertext": "ACAMA TAKSTPTDY TI3O",
+      "createdAt": "2026-09-27T18:25:13.580Z"
+    },
+    {
+      "id": 4,
+      "userId": 2,
+      "algorithm": "vigenere",
+      "ciphertext": "baca li hslstn fkz",
+      "createdAt": "2026-09-27T18:25:36.806Z"
+    }
+  ]
+}
